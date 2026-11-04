@@ -99,3 +99,24 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+.doctor-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.doctor-card button {
+    width: 100%;
+    padding: 12px;
+    background: #0796a5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .doctorcontainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
