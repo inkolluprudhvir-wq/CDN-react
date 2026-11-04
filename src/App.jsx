@@ -4,7 +4,8 @@ import './components/styles.css'
 import Doctorcard from './components/Doctorcard'
 import Addnewdoctor from './components/Addnewdoctor'
 import { useState, useEffect } from 'react'
-
+import { Routes, Route } from 'react-router-dom'
+import Doctordetails from './components/Doctordetails'
 function App() {
   let [c, setC] = useState(0)
   let [count, setCount] = useState(0)
@@ -22,17 +23,12 @@ function App() {
       <button onClick={() => setCount(count + 1)}>inc count</button>
 
       <Navbar />
-      <Section />
 
-      <div className="doctorcontainer">
-        <Doctorcard name="John" gender="male" specialization="Bones Specialist" />
-        <Doctorcard name="Jessy" gender="female" specialization="Heart Specialist" />
-        <Doctorcard name="Jack" gender="male" specialization="Muscles Specialist" />
-        <Doctorcard name="Jane" gender="female" specialization="Neurology" />
-        <Doctorcard name="Jorden" gender="male" specialization="Orthopedic" />
-      </div>
-
-      <Addnewdoctor />
+      <Routes>
+        <Route path='/' element={<Section />} />
+        <Route path='/adddoctor' element={<Addnewdoctor />} />
+        <Route path='/doctors/:id' element={<Doctordetails />} />
+      </Routes>
     </div>
   )
 }

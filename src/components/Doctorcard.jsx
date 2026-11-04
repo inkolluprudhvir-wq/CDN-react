@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom'
 
+function Doctorcard({ name, gender, specialization, id }) {
+  const navigate = useNavigate()
 
-function Doctorcard(props) {
   return (
     <div>
       <div>
@@ -10,12 +12,16 @@ function Doctorcard(props) {
           alt="Doctor"
         />
       </div>
-      <h3>{props.name}</h3>
-      <p>{props.gender}</p>
-      <p>{props.specialization}</p>
-      <button>View Details</button>
+
+      <h3>{name}</h3>
+      <p>{gender}</p>
+      <p>{specialization}</p>
+
+      <button onClick={() => navigate(`/doctors/${id}`)}>
+        View Details
+      </button>
     </div>
-  );
+  )
 }
 
-export default Doctorcard;
+export default Doctorcard
