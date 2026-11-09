@@ -47,3 +47,40 @@ button{
     background: black;
     color: white;
 }
+.doctorcontainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 20px;
+}
+
+.doctor-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+}
+
+.doctor-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.doctor-card button {
+    width: 100%;
+    padding: 12px;
+    background: #0796a5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .doctorcontainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,36 +1,39 @@
+import Addnewdoctor from './components/Addnewdoctor'
+import Doctordetails from './components/Doctordetails'
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import DoctorDetails from './components/Doctordetails';
+import Weather from './components/Weather';
+import Protectedroute from './components/Protectedroute';
+import Doctorprovider from './components/Doctorprovider';
 import Navbar from './components/Navbar'
 import Section from './components/Section'
-import './components/styles.css'
-import Doctorcard from './components/Doctorcard'
-import Addnewdoctor from './components/Addnewdoctor'
-import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Doctordetails from './components/Doctordetails'
+
 function App() {
-  let [c, setC] = useState(0)
-  let [count, setCount] = useState(0)
+    let [islogin, setIslogin] = useState(false);
 
-  useEffect(() => {
-    console.log('api call running')
-  }, [count])
+    return (
+        <div>
+            <button onClick={() => setIslogin(true)}>click to login</button>
+            <Navbar />
 
-  return (
-    <div>
-      {c}
-      <button onClick={() => setC(c + 1)}>inc c</button>
-
-      {count}
-      <button onClick={() => setCount(count + 1)}>inc count</button>
-
-      <Navbar />
-
-      <Routes>
-        <Route path='/' element={<Section />} />
-        <Route path='/adddoctor' element={<Addnewdoctor />} />
-        <Route path='/doctors/:id' element={<Doctordetails />} />
-      </Routes>
-    </div>
-  )
+            <Routes>
+                <Route path='/' element={<Section />} />
+                <Route
+                    path='/adddoctor'
+                    element={
+                        <Protectedroute islogin={islogin}>
+                            <Doctorprovider>
+                                <Addnewdoctor />
+                            </Doctorprovider>
+                        </Protectedroute>
+                    }
+                />
+                <Route path='/doctor/:id' element={<Doctordetails />} />
+                <Route path='/weather' element={<Weather />} />
+            </Routes>
+        </div>
+    );
 }
 
-export default App
+export default App;
